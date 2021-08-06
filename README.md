@@ -30,7 +30,7 @@
 ### Примеры запросов
 Для краткости приведены сами запросы (с помощью утилиты curl), HTTP-код ответа и данные JSON для модели cars. С остальными моделями работа ничем не отличается.
 
-### POST
+#### POST
 ```
 curl -v http://127.0.0.1:8000/cars/ -H "Content-type:application/json" -X POST -d @json_msg1.txt
 
@@ -84,6 +84,3 @@ curl -v http://127.0.0.1:8000/cars/5/ -H "Content-type:application/json" -X PATC
 
 {"id":5,"year":2017,"model":"Patched Model","manufacturer":"Yeah Boi Motors","color":"Black","mileage":55000}
 ```
-
-### 
-
