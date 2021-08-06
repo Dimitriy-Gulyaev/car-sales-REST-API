@@ -1,0 +1,462 @@
+openapi: 3.0.2
+info:
+  title: 'car sales REST API'
+  version: 1.0.0
+paths:
+  /sales/:
+    get:
+      operationId: listSales
+      description: 'get information about all car sales'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sale'
+          description: ''
+      tags:
+      - sales
+    post:
+      operationId: createSale
+      description: 'post information about sale to the database'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sale'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Sale'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Sale'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sale'
+          description: ''
+      tags:
+      - sales
+  /sales/{id}/:
+    get:
+      operationId: retrieveSale
+      description: 'get sale by ID'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this sale.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sale'
+          description: ''
+      tags:
+      - sales
+    put:
+      operationId: updateSale
+      description: 'update sale information'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this sale.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sale'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Sale'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Sale'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sale'
+          description: ''
+      tags:
+      - sales
+    patch:
+      operationId: partialUpdateSale
+      description: 'update some fields (price, car or dealer)'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this sale.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sale'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Sale'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Sale'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sale'
+          description: ''
+      tags:
+      - sales
+    delete:
+      operationId: destroySale
+      description: 'delete sale from the database'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this sale.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: 'No Content, sale deleted from the database'
+      tags:
+      - sales
+  /cars/:
+    get:
+      operationId: listCars
+      description: 'get list of all cars from the database'
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Car'
+          description: ''
+      tags:
+      - cars
+    post:
+      operationId: createCar
+      description: 'post information about new car to the database'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Car'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Car'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Car'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+          description: ''
+      tags:
+      - cars
+  /cars/{id}/:
+    get:
+      operationId: retrieveCar
+      description: 'get information about car with specific ID'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this car.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+          description: ''
+      tags:
+      - cars
+    put:
+      operationId: updateCar
+      description: 'update car information'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this car.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Car'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Car'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Car'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+          description: ''
+      tags:
+      - cars
+    patch:
+      operationId: partialUpdateCar
+      description: 'partially update car information'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this car.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Car'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Car'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Car'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+          description: ''
+      tags:
+      - cars
+    delete:
+      operationId: destroyCar
+      description: 'delete car from the database'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this car.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: 'No Content, car deleted from the database'
+      tags:
+      - cars
+  /dealers/:
+    get:
+      operationId: listDealers
+      description: 'get information about all dealers in the database'
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Dealer'
+          description: ''
+      tags:
+      - dealers
+    post:
+      operationId: createDealer
+      description: 'post information about new dealer to the database'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dealer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Dealer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Dealer'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dealer'
+          description: ''
+      tags:
+      - dealers
+  /dealers/{id}/:
+    get:
+      operationId: retrieveDealer
+      description: 'get information about dealer with specific ID'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this dealer.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dealer'
+          description: ''
+      tags:
+      - dealers
+    put:
+      operationId: updateDealer
+      description: 'update dealer information'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this dealer.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dealer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Dealer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Dealer'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dealer'
+          description: ''
+      tags:
+      - dealers
+    patch:
+      operationId: partialUpdateDealer
+      description: 'partially update dealer information'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this dealer.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dealer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Dealer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Dealer'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dealer'
+          description: ''
+      tags:
+      - dealers
+    delete:
+      operationId: destroyDealer
+      description: 'delete dealer from the database'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this dealer.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: 'No Content, dealer deleted from the database'
+      tags:
+      - dealers
+components:
+  schemas:
+    Sale:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        price:
+          type: integer
+        car:
+          type: integer
+        dealer:
+          type: integer
+      required:
+      - price
+      - car
+      - dealer
+    Car:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        year:
+          type: integer
+        model:
+          type: string
+          maxLength: 50
+        manufacturer:
+          type: string
+          maxLength: 50
+        color:
+          type: string
+          nullable: true
+          maxLength: 50
+        mileage:
+          type: integer
+      required:
+      - year
+      - model
+      - manufacturer
+    Dealer:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 50
+      required:
+      - name
