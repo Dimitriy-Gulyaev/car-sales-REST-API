@@ -1,0 +1,5 @@
+.idea/
+cars_sellings/migrations/
+cars_sellings/__pycache__/
+cars_api/__pycache__/
+tmp/
